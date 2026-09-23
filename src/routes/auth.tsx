@@ -40,12 +40,6 @@ function AdminLogin() {
     finally { setBusy(false); }
   }
 
-  async function recover() {
-    setBusy(true); setMessage("");
-    const { error } = await supabase.auth.resetPasswordForEmail("programadosapia@gmail.com", { redirectTo: `${window.location.origin}/reset-password` });
-    setMessage(error ? "Não foi possível enviar a recuperação agora." : "Enviamos as instruções ao e-mail de recuperação cadastrado.");
-    setBusy(false);
-  }
 
   return <main className="grid min-h-screen bg-primary lg:grid-cols-[1.1fr_.9fr]">
     <section className="hidden items-end border-r border-primary-foreground/15 p-12 text-primary-foreground lg:flex"><div><img src={logoAsset.url} alt="BS Notícias" className="w-full max-w-xl bg-background p-3" /><p className="mt-8 max-w-md font-display text-3xl font-bold">Publicação e gestão editorial em um só lugar.</p></div></section>
@@ -60,7 +54,8 @@ function AdminLogin() {
         {message && <p role="status" className="text-sm text-muted-foreground">{message}</p>}
         <Button type="submit" className="w-full" disabled={busy}>{busy ? "Entrando…" : "Entrar"}</Button>
       </form>
-      <Button type="button" variant="link" className="mt-3 h-auto px-0 text-muted-foreground" onClick={recover} disabled={busy}>Esqueci minha senha</Button>
+      <Button type="button" variant="link" className="mt-3 h-auto px-0 text-muted-foreground" onClick={() => setMessage("Acesso somente para a conta administrativa cadastrada.")} disabled={busy}>Precisa de ajuda?</Button>
     </div></section>
+
   </main>;
 }

@@ -1,6 +1,14 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { FileText, LogOut, Megaphone, Pencil, Plus, RefreshCw, Trash2, X } from "lucide-react";
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useState,
+  type FormEvent,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import logoAsset from "@/assets/bs-noticias-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -406,10 +414,13 @@ function AdminPanel() {
 }
 
 function Field({ label, children }: { label: string; children: ReactNode }) {
+  const id = `campo-${criarSlug(label)}`;
   return (
     <div className="space-y-2">
-      <Label>{label}</Label>
-      {children}
+      <Label htmlFor={id}>{label}</Label>
+      {isValidElement(children)
+        ? cloneElement(children as ReactElement<{ id?: string }>, { id })
+        : children}
     </div>
   );
 }

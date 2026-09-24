@@ -108,7 +108,7 @@ export function NewsPage({
                 {lead.excerpt}
               </p>
               <p className="mt-5 font-mono text-[10px] uppercase text-muted-foreground">
-                {new Date(lead.date).toLocaleDateString("pt-BR", { dateStyle: "long" })}
+                {new Date(lead.date).toLocaleDateString("pt-BR", { dateStyle: "long", timeZone: "America/Sao_Paulo" })}
               </p>
             </Link>
             <div className="grid gap-8 border-t border-border pt-8 md:grid-cols-2">
@@ -140,6 +140,7 @@ export function NewsPage({
                       {new Date(story.date).toLocaleTimeString("pt-BR", {
                         hour: "2-digit",
                         minute: "2-digit",
+                        timeZone: "America/Sao_Paulo",
                       })}
                     </time>
                     <h3 className="mt-1 text-sm font-semibold leading-snug hover:text-destructive">

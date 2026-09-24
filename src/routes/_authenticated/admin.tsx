@@ -180,6 +180,7 @@ function AdminPanel() {
   }
 
   async function sair() {
+    sessionStorage.removeItem("bs-admin-login");
     await supabase.auth.signOut();
     await navigate({ to: "/auth", replace: true });
   }

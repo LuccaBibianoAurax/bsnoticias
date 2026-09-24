@@ -64,7 +64,7 @@ function ArticlePage() {
           <div className="mt-6 flex flex-wrap gap-3 font-mono text-[10px] uppercase text-muted-foreground">
             <span>Por {article.author}</span>
             <span>•</span>
-            <time>{new Date(article.date).toLocaleDateString("pt-BR", { dateStyle: "long" })}</time>
+            <time>{new Date(article.date).toLocaleDateString("pt-BR", { dateStyle: "long", timeZone: "America/Sao_Paulo" })}</time>
           </div>
           {article.imageUrl && (
             <img

@@ -35,6 +35,7 @@ function AdminLogin() {
       if (!result.ok) { setMessage(result.message); return; }
       const session = await supabase.auth.setSession({ access_token: result.accessToken, refresh_token: result.refreshToken });
       if (session.error) throw session.error;
+      sessionStorage.setItem("bs-admin-login", "1");
       await navigate({ to: "/admin" });
     } catch { setMessage("Não foi possível entrar agora. Tente novamente."); }
     finally { setBusy(false); }

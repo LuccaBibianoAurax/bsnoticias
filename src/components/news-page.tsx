@@ -140,6 +140,7 @@ export function NewsPage({
                       {new Date(story.date).toLocaleTimeString("pt-BR", {
                         hour: "2-digit",
                         minute: "2-digit",
+                        timeZone: "America/Sao_Paulo",
                       })}
                     </time>
                     <h3 className="mt-1 text-sm font-semibold leading-snug hover:text-destructive">
